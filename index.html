@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PressVote · Campus poster ballot</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f6f4ef;color:#202322;font:16px/1.5 Arial,sans-serif}main,header,footer{width:min(940px,92%);margin:auto}
+header,footer,.row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}header{padding:19px 0;border-bottom:2px solid}header strong{font-size:24px;letter-spacing:-1.5px}small,.label{font:700 12px/1.5 monospace;letter-spacing:.08em;text-transform:uppercase}
+h1{font:700 clamp(40px,6vw,76px)/.99 Georgia,serif;letter-spacing:-.045em;margin:16px 0}h2{font:700 27px/1.1 Georgia,serif;margin:0 0 14px}.intro{margin:35px 0 22px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card,.panel{background:white;border:1px solid #c8cbc6;padding:16px}.card{display:block;cursor:pointer}.card:has(input:checked){outline:3px solid #125c49;outline-offset:-3px}.card img{display:block;width:100%;height:auto;margin-bottom:10px}.card input{accent-color:#125c49}.panel{margin:18px 0}.panel p{overflow-wrap:anywhere}.setup{display:flex;gap:10px;flex-wrap:wrap;margin:7px 0}input[type=text]{font:14px monospace;padding:12px;min-width:0;flex:1 1 280px;border:1px solid #777}button{background:#125c49;color:white;border:none;padding:11px 17px;font:700 15px Arial;cursor:pointer}button:disabled{opacity:.48;cursor:default}progress{width:100%;accent-color:#125c49}.result{margin:10px 0}#receipt{overflow-wrap:anywhere}a{color:#125c49}footer{border-top:1px solid #bbb;padding:15px 0 24px}ol{padding-left:22px}button:focus-visible,input:focus-visible{outline:3px solid #0067c2;outline-offset:3px}@media(max-width:530px){.grid{gap:7px}.card{padding:7px}.card strong{font-size:14px}}
+</style></head><body>
+<header><strong>PressVote</strong><small>Ethereum / Ganache Local</small></header>
+<main><section class="intro"><span class="label">Campus print campaign</span><h1>Pick the next poster.</h1><p>Which design should go to print for the student makers’ fair? Each wallet can cast one permanent vote.</p></section>
+<div class="grid" role="radiogroup" aria-label="Poster choice">
+<label class="card"><img src="night-market.svg" alt="Night Market poster with a pink moon above a striped skyline"><input type="radio" name="poster" value="0" checked> <strong>Night Market</strong></label>
+<label class="card"><img src="fresh-type.svg" alt="Fresh Type poster with a red four-petal flower on lime green"><input type="radio" name="poster" value="1"> <strong>Fresh Type</strong></label></div>
+<section class="panel"><h2>Your ballot</h2><label for="address">Ganache Local contract address</label><div class="setup"><input id="address" type="text" placeholder="0x…" spellcheck="false"><button id="connect">Connect MetaMask</button></div>
+<p id="wallet">Wallet disconnected</p><button disabled id="vote">Cast vote</button><p id="status" role="status">Click Connect MetaMask to load this ballot.</p><div id="receipt"></div></section>
+<section class="panel"><div class="row"><h2>Ballot results</h2><button id="refresh" disabled>Refresh totals</button></div>
+<div class="result">Night Market <strong id="n0">—</strong><progress id="bar0" max="100" value="0" aria-label="Night Market share"></progress></div>
+<div class="result">Fresh Type <strong id="n1">—</strong><progress id="bar1" max="100" value="0" aria-label="Fresh Type share"></progress></div><p id="total">Connect to load votes from Ganache Local.</p></section>
+<details><summary>How to vote</summary><ol><li>Open MetaMask on Ganache Local and connect the ballot.</li><li>Select a poster and approve the vote in MetaMask.</li><li>Check the confirmed receipt and updated totals below the ballot.</li></ol></details></main>
+<footer><small>MG3012 · Blockchain Technology for Business</small></footer>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"></script>
+<script src="script.js"></script></body></html>
